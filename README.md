@@ -1,2 +1,2 @@
 # Employee Management Web Application
-.Net, ReactJs, MSSQL
+ASP.Net Core, ReactJs, MSSQL
