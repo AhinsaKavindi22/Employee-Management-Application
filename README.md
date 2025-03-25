@@ -1,1 +1,2 @@
-# Employee Management Web API
+# Employee Management Web Application
+ASP.Net Core, ReactJs, MSSQL
