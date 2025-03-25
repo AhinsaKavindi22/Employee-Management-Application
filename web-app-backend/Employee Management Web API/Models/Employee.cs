@@ -1,4 +1,6 @@
-﻿namespace Employee_Management_Web_API.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Employee_Management_Web_API.Models
 {
     public class Employee
     {
@@ -8,5 +10,9 @@
         public string? Age { get; set; }
 
         public int IsActive { get; set; }
+
+        public int? DepartmentId { get; set; }
+        [ForeignKey("DepartmentId")]
+        public Department? Department { get; set; }
     }
 }

@@ -148,8 +148,6 @@ const CRUD = () => {
         setIsActive(e.target.checked ? 1 : 0);
     };
 
-    
-
 
     return (
         <Fragment>
@@ -162,6 +160,7 @@ const CRUD = () => {
                         <th>Name</th>
                         <th>Age</th>
                         <th>IsActive</th>
+                        <th>Department Name</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -173,6 +172,7 @@ const CRUD = () => {
                                 <td>{item.name}</td>
                                 <td>{item.age}</td>
                                 <td>{item.isActive}</td>
+                                <td>{item.departmentName}</td>
                                 <td colSpan={2}>
                                     <button onClick={() => handleEdit(item.id)} className="btn btn-primary">Edit</button>
                                     &nbsp; <button onClick={() => handleDelete(item.id)} className="btn btn-danger">Delete</button>

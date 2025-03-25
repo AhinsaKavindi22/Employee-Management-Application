@@ -1,4 +1,5 @@
 ﻿using Employee_Management_Web_API.Data;
+using Employee_Management_Web_API.DTO;
 using Employee_Management_Web_API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,15 +18,38 @@ namespace Employee_Management_Web_API.Controllers
             _employeeContext = employeeContext;
         }
 
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        //{
+        //    // IEnumrable is used for return list of employees
+        //    if (_employeeContext.Employees == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return await _employeeContext.Employees.ToListAsync();
+        //}
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
-            // IEnumrable is used for return list of employees
             if (_employeeContext.Employees == null)
             {
                 return NotFound();
             }
-            return await _employeeContext.Employees.ToListAsync();
+
+            var employees = await _employeeContext.Employees
+                .Include(emp => emp.Department) // Join Department table
+                .Select(emp => new EmployeeDTO
+                {
+                    Id = emp.Id,
+                    Name = emp.Name,
+                    Age = emp.Age,
+                    IsActive = emp.IsActive,
+                    DepartmentName = emp.Department != null ? emp.Department.Name : "No Department" // Handle null department
+                })
+                .ToListAsync();
+
+            return Ok(employees);
         }
 
         [HttpGet("{id}")]
