@@ -52,12 +52,15 @@ namespace Employee_Management_Web_API.Data
                     DepartmentId = 3
                 }
             );
+            
         }
 
         // enable us to access this model from database
         public DbSet<Employee> Employees { get; set; }
 
         public DbSet<Department> Departments { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
-   
+
 }

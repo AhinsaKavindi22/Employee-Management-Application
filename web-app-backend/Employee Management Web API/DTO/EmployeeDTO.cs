@@ -9,7 +9,6 @@ namespace Employee_Management_Web_API.DTO
             public string? Name { get; set; }
             public string? Age { get; set; }
             public int IsActive { get; set; }
-
             public string? DepartmentName { get; set; }
 
     }

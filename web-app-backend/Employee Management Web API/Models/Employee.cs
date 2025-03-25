@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Employee_Management_Web_API.Models
 {
@@ -13,6 +14,8 @@ namespace Employee_Management_Web_API.Models
 
         public int? DepartmentId { get; set; }
         [ForeignKey("DepartmentId")]
+
+        [JsonIgnore]
         public Department? Department { get; set; }
     }
 }
